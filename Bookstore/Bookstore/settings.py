@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import django_heroku
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -117,14 +118,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT=os.path.join(BASE_DIR,'static/')
-
-# Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
-
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-
 COMPRESS_ENABLED = True
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -153,3 +146,7 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET='PukgzmC4QEroHMik9-5wwONl'
 #Social Auth -Facebook
 SOCIAL_AUTH_FACEBOOK_KEY='340870090027192'
 SOCIAL_AUTH_FACEBOOK_SECRET='3933eb3e23081596fa8aca74cd2294a9'
+
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
